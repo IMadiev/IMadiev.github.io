@@ -1,0 +1,23 @@
+#noscript {
+    text-align: center;
+    display: block;
+    font-size: 50px;
+    padding: 20px 0;
+    background: #F00;
+}
+
+#workspace {
+    position: fixed;
+    left: 0px;
+    top: 75px;
+}
+
+#toolbar {
+    position: fixed;
+    z-index: 999;
+}
+
+#image_wrapper {
+    position: fixed;
+    left: 90px;
+}

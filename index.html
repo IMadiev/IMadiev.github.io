@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>MapEditor ver. 1.0</title>
+    <link href="style.css" type="text/css" rel="stylesheet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+<body>
+
+<noscript>
+    <div id = "noscript">
+        Для работы среды разработки необходимо включить JavaScript в вашем браузере.
+    </div>
+</noscript>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Управление проектом</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">MapEditor</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Загрузить проект<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">С устройства</a></li>
+                        <li><a href="#">Из "Мои проекты"</a></li>
+                        <li><a href="#">Из каталога</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Сохранить проект<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">На устройство</a></li>
+                        <li><a href="#">В "Мои проекты"</a></li>
+                        <li><a href="#">В каталог</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Выход</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="workspace">
+    <!-- Панель инструментов-->
+    <div class="btn-group-vertical" id="toolbar">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#uploadImage"><img src="icons/Upload/icons8-upload-link-document-30.png"></button>
+        <button type="button" class="btn btn-default"><img src="icons/Recognize/icons8-select-none-30.png"></button>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <img src="icons/Draw/icons8-edit-30.png">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#"><img src="icons/Draw/icons8-rectangular-30.png"> Прямоугольник</a></li>
+                <li><a href="#"><img src="icons/Draw/icons8-round-30.png"> Круг</a></li>
+                <li><a href="#"><img src="icons/Draw/icons8-polygon-30.png"> Полигон</a></li>
+            </ul>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <img src="icons/Show/icons8-eye-30.png">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#"><img src="icons/Show/icons8-select-none-30.png"> Контуры</a></li>
+                <li><a href="#"><img src="icons/Show/icons8-active-directory-30.png"> Граф</a></li>
+                <li><a href="#"><img src="icons/Show/icons8-select-all-30.png"> Информация</a></li>
+            </ul>
+        </div>
+        <button type="button" class="btn btn-default"><img src="icons/AddInfo/icons8-create-document-30.png"></button>
+        <button type="button" class="btn btn-default"><img src="icons/Help/icons8-question-mark-30.png"></button>
+    </div>
+
+    <div id="image_wrapper">
+        <div id="image">
+            <img src="c2d1209ead48455d8e5e1c1108db56c3.png" alt="#" id="img" />
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" id="svg"></svg>
+        </div>
+    </div>
+</div>
+
+<div id="uploadImage" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">х</button>
+                <h4 class="modal-title">Загрузка изображения</h4>
+            </div>
+            <div class="modal-body">
+                <div id="loading" style="display: none">Loading</div>
+                <div id="file_reader_support">
+                    <label>Перетащите картинку</label>
+                    <div id="dropzone">
+                        <span class="clear_button" title="clear">x</span>
+                        <img src="" alt="preview" id="sm_img" />
+                    </div>
+                    <b>Или введите URL:</b>
+                </div>
+                <span id="url_wrapper">
+                    <input type="text" id="url" />
+                </span>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal">Ок</button>
+                <button class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
