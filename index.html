@@ -59,10 +59,10 @@
 <div id="workspace">
     <!-- Панель инструментов-->
     <div class="btn-group-vertical" id="toolbar">
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#uploadImage"><img src="icons/Upload/icons8-upload-link-document-30.png"></button>
-        <button type="button" class="btn btn-default"><img src="icons/Recognize/icons8-select-none-30.png"></button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#uploadImage" title="Загрузить изображение"><img src="icons/Upload/icons8-upload-link-document-30.png"></button>
+        <button type="button" class="btn btn-default" title="Распознать контур"><img src="icons/Recognize/icons8-select-none-30.png"></button>
         <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Нарисовать контур">
                 <img src="icons/Draw/icons8-edit-30.png">
                 <span class="caret"></span>
             </button>
@@ -73,7 +73,7 @@
             </ul>
         </div>
         <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Показать на схеме">
                 <img src="icons/Show/icons8-eye-30.png">
                 <span class="caret"></span>
             </button>
@@ -83,10 +83,11 @@
                 <li><a href="#"><img src="icons/Show/icons8-select-all-30.png"> Информация</a></li>
             </ul>
         </div>
-        <button type="button" class="btn btn-default"><img src="icons/AddInfo/icons8-create-document-30.png"></button>
-        <button type="button" class="btn btn-default"><img src="icons/Help/icons8-question-mark-30.png"></button>
+        <button type="button" class="btn btn-default" title="Добавить информацию"><img src="icons/AddInfo/icons8-create-document-30.png"></button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#help" title="Показать справку"><img src="icons/Help/icons8-question-mark-30.png"></button>
     </div>
 
+    <!-- Контейнер изображения-->
     <div id="image_wrapper">
         <div id="image">
             <img src="c2d1209ead48455d8e5e1c1108db56c3.png" alt="#" id="img" />
@@ -105,19 +106,35 @@
             <div class="modal-body">
                 <div id="loading" style="display: none">Loading</div>
                 <div id="file_reader_support">
-                    <label>Перетащите картинку</label>
-                    <div id="dropzone">
-                        <span class="clear_button" title="clear">x</span>
-                        <img src="" alt="preview" id="sm_img" />
+                    <div id="drop-area">
+                        <form class="my-form">
+                            <p>Загрузите изображения с помощью диалога выбора файлов или перетащив нужные изображения в выделенную область</p>
+                            <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+                            <label class="button" for="fileElem">Выбрать изображения</label>
+                        </form>
                     </div>
-                    <b>Или введите URL:</b>
+                    <div id="gallery"></div>
                 </div>
-                <span id="url_wrapper">
-                    <input type="text" id="url" />
-                </span>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-success" data-dismiss="modal">Ок</button>
+                <button class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="help" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">х</button>
+                <h4 class="modal-title">Справка</h4>
+            </div>
+            <div class="modal-body">
+                Юрец пидр
+            </div>
+            <div class="modal-footer">
                 <button class="btn btn-danger" data-dismiss="modal">Закрыть</button>
             </div>
         </div>
@@ -130,5 +147,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/uploadImage.js"></script>
+<script>
+    $(document).ready (function (){
+        $('[data-toggle="tooltip"]').tooltip ();
+    });
+</script>
 </body>
 </html>
