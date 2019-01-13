@@ -6,12 +6,6 @@
     background: #F00;
 }
 
-#workspace {
-    position: fixed;
-    left: 0px;
-    top: 75px;
-}
-
 #toolbar {
     position: fixed;
     z-index: 999;
@@ -20,4 +14,5 @@
 #image_wrapper {
     position: fixed;
     left: 90px;
+    overflow: auto;
 }
