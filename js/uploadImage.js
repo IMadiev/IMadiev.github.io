@@ -51,6 +51,7 @@ function previewFile(file) {
     reader.onloadend = function() {
         let img = document.createElement('img')
         img.src = reader.result
+        img.className+='img-responsive'
         document.getElementById('gallery').appendChild(img)
     }
 }
