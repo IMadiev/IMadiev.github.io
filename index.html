@@ -94,7 +94,6 @@
     <div id="image_wrapper">
         <div id="image">
             <img src="c2d1209ead48455d8e5e1c1108db56c3.png" alt="#" id="img" class="contourmap img-responsive"/>
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" id="svg"></svg>
         </div>
     </div>
 </div>
@@ -112,14 +111,14 @@
                     <div id="drop-area">
                         <form class="my-form">
                             <p>Загрузите изображения с помощью диалога выбора файлов.</p>
-                            <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+                            <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
                         </form>
                     </div>
-                    <div id="gallery" class="container-fluid"></div>
+                    <div id="gallery" class="container-fluid" style="margin-top: 10px"></div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal">Ок</button>
+                <button class="btn btn-success accept-image" data-dismiss="modal">Ок</button>
                 <button class="btn btn-danger" data-dismiss="modal">Закрыть</button>
             </div>
         </div>
